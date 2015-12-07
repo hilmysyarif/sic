@@ -26,6 +26,7 @@ return array(
     'PhpSpec' => array($vendorDir . '/phpspec/phpspec/src'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'Mailchimp' => array($vendorDir . '/mailchimp/mailchimp/src'),
+    'Jasekz\\Laradrop' => array($vendorDir . '/jasekz/laradrop/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'Dotenv' => array($vendorDir . '/vlucas/phpdotenv/src'),
@@ -33,5 +34,4 @@ return array(
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
     'Cornford\\Googlmapper' => array($vendorDir . '/cornford/googlmapper/src'),
-    'Baum' => array($vendorDir . '/baum/baum/src'),
 );

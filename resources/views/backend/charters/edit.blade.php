@@ -1,7 +1,7 @@
 @extends('backend/master')
 
 @section('htmlheader_title')
-    Edit News
+    Edit Charters
 @endsection
 
 
@@ -12,14 +12,14 @@
 <div class="page-header filled full-block light">
     <div class="row">
         <div class="col-md-6">
-            <h2>NEWS</h2>
+            <h2>CHARTERS</h2>
             <p></p>
         </div>
         <div class="col-md-6">
             <ul class="list-page-breadcrumb">
                 <li><a href="#">Home <i class="zmdi zmdi-chevron-right"></i></a></li>
                 <li><a href="#">Dashboard <i class="zmdi zmdi-chevron-right"></i></a></li>
-                <li class="active-page">Edit News</li>
+                <li class="active-page">Edit Charters</li>
             </ul>
         </div>
     </div>
@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="widget-header">
-                                        <h3>Edit News</h3>
+                                        <h3>Edit Charters</h3>
                                         <p>
 
                                         </p>
@@ -69,6 +69,10 @@
                                                     ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="form-group">
+                                                {!! Form::label('D_Tour', 'Description:') !!}
+                                                {!! Form::textarea('descr',null,['class'=>'form-control summernote']) !!}
+                                            </div>                                            
+                                            <div class="form-group">
                                                 {!! Form::label('B_Tour', 'Bedrooms:') !!}
                                                 {!! Form::text('beds',null,['class'=>'form-control']) !!}
                                             </div>
@@ -88,9 +92,17 @@
                                                 {!! Form::label('P_Tour', 'Price:') !!}
                                                 {!! Form::text('price',null,['class'=>'form-control']) !!}
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group" id="upload">
                                                 {!! Form::label('Image', 'Featured Image:') !!}
-                                                {!! Form::file('image', null) !!}
+                                               <div class="laradrop"
+  laradrop-upload-handler="{{ route('laradrop.store') }}"
+  laradrop-file-delete-handler="{{ route('laradrop.destroy') }}" 
+  laradrop-file-source="{{ route('laradrop.index') }}"
+  laradrop-csrf-token="{{ csrf_token() }}" >
+  <button class='btn btn-primary laradrop-select-file' >Add File</button>
+</div>
+<br />
+<input type="text" class="form-control" name="image[]" id="images">
                                             </div>
                                             <div class="form-group">
                                                 {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}

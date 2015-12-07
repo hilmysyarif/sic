@@ -84,6 +84,14 @@
         {!! Form::text('email',settings('email'),['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
+        {!! Form::label('FB', 'Facebook:') !!}
+        {!! Form::text('facebook',settings('facebook'),['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('TW', 'Twitter:') !!}
+        {!! Form::text('twitter',settings('twitter'),['class'=>'form-control']) !!}
+    </div>            
+    <div class="form-group">
         {!! Form::label('S_KEYWRD', 'Site Keywords:') !!}
         {!! Form::text('keywords',settings('keywords'),['class'=>'form-control']) !!}
     </div>

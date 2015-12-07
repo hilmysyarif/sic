@@ -106,9 +106,6 @@
                                 <th  data-hide="phone">
                                     Price
                                 </th>
-                                <th  data-hide="phone">
-                                   Status
-                                </th>
                                 <th>
                                     Order Date
                                 </th>

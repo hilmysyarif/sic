@@ -42,7 +42,7 @@ class DestinationController extends Controller
 
         $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
         $page = DB::table('categories')->whereid(3)->select('categories.name as name')->get();
-        $news = DB::table('destinations')->whereSlug($slug)->leftJoin('schedules', 'destinations.sc_id', '=', 'schedules.id')->select('destinations.tujuan', 'destinations.description', 'destinations.price', 'destinations.price', 'destinations.floors', 'destinations.address', 'destinations.city', 'destinations.state', 'destinations.mls', 'destinations.quare_feet', 'destinations.square_feet', 'destinations.bed', 'destinations.bath', 'destinations.image', 'destinations.feature', 'schedules.tour_date as tour_date', 'schedules.trip_length as trip_length', 'schedules.route as route', 'schedules.dept_from as dept_from', 'schedules.arrive_at as arrive_at', 'schedules.space as space')->get();
+        $news = DB::table('destinations')->whereSlug($slug)->leftJoin('schedules', 'destinations.sc_id', '=', 'schedules.id')->get();
         return view('frontend.destination.single')->with(['news' => $news, 'page' => $page, 'news2' => $news2]);
 
 

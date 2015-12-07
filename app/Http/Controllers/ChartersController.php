@@ -287,24 +287,23 @@ class ChartersController extends Controller
     $bath = Input::get('bath'),
     $beths = Input::get('beths'),
     $lokasi = Input::get('lokasi'),
+    $descr = Input::get('descr'),
     $sqft = Input::get('sqft'),
     $yacth = Input::get('yacth'),
     $price = Input::get('price'),
-    $image = Input::file('image'),
+    $image = Request::get('image'),
     ));
 
     if($image == '' || $title == '' || $category = ''){
             return \Redirect::route('charters')->with('message', 'You must fill required form');
     }else{
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $path = public_path('/img/'. $imageName);
-            Image::make($image->getRealPath())->save($path);
 
-            $news2->image = 'img/'. $imageName;
+            $news2->image = $image;
             $news2->name = $title;
             $news2->beds = $beds;
             $news2->bath = $bath;
             $news2->berths = $beths;
+            $news2->descr = $descr;
             $news2->lokasi = $lokasi;
             $news2->sqft = $sqft;
             $news2->categories = $yacth;
@@ -364,22 +363,21 @@ class ChartersController extends Controller
     $beths = Input::get('beths'),
     $lokasi = Input::get('lokasi'),
     $sqft = Input::get('sqft'),
+    $descr = Input::get('descr'),    
     $yacth = Input::get('yacth'),
     $price = Input::get('price'),
-    $image = Input::file('image'),
+    $image = Input::get('image'),
     ));
     if($image == '' || $title == '' || $category = ''){
             return \Redirect::route('charters')->with('message', 'You must fill required form');
     }else{
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $path = public_path('/img/'. $imageName);
-            Image::make($image->getRealPath())->save($path);
 
-            $news2->image = 'img/'. $imageName;
+            $news2->image = $image;
             $news2->name = $title;
             $news2->beds = $beds;
             $news2->bath = $bath;
             $news2->berths = $beths;
+            $news2->descr = $descr;            
             $news2->lokasi = $lokasi;
             $news2->sqft = $sqft;
             $news2->categories = $yacth;

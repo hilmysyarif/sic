@@ -45,15 +45,13 @@ class BookingController extends Controller
      */
     public function inquirysearch()
     {
-        $tour = DB::table('charters')->leftJoin('lokasis', 'charters.lokasi', '=', 'lokasis.id')->select('charters.name', 'lokasis.name as lokasi', 'charters.berths', 'charters.price', 'charters.image', 'charters.slug')->limit(10)->get();
+        //$tour = DB::table('charters')->leftJoin('lokasis', 'charters.lokasi', '=', 'lokasis.id')->select('charters.name', 'lokasis.name as lokasi', 'charters.berths', 'charters.price', 'charters.image', 'charters.slug')->limit(10)->get();      
+        $tour = Input::all();
         $tourname = Input::get('tujuan');
-        $tourfrom = Input::get('date_from');
-        $tourto = Input::get('date_to');        
-        $tour = \DB::table('charters')->get();
-
-
+        $tourdate = Input::get('date_from');
+        $tourdateto = Input::get('date_to'); 
         $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();                
-        return view('frontend.inquiry.search', ['tourfrom' => $tourfrom, 'tourname' => $tourname, 'tourto' => $tourto, 'news2' => $news2 ]);
+        return view('frontend.inquiry.search', ['tourdate' => $tourdate, 'tourname' => $tourname, 'tourdateto' => $tourdateto, 'news2' => $news2 ]);
 
 
     }
@@ -117,35 +115,39 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function inquiry_storeatas($tourdate, $tour)
+    public function inquiry_storeatas()
     {
-                $tour = Charters::where('slug', '=', $slug)->first();
-    $customers = Customers::first();    
-        $booking = Booking::first();
+
+        $tour = Input::all();
+        $tourname = Input::get('tourname');
+        $tourdate = Input::get('tourdate');
+        $tourdateto = Input::get('tourdateto');
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();              
         $customers = new Customers(array(
-    $email = \Input::get('email'),
-    $phone = \Input::get('phone'),
-    $country = \Input::get('country'),
+    $cust_name = Input::get('name'),            
+    $email = Input::get('email'),
+    $phone = Input::get('phone'),
+    $country = Input::get('country'),
             ));
     $bookings = new Booking(array(
-    $cust_name = \Input::get('name'),
-    $message = \Input::get('message'),
+    $cust_name = Input::get('name'),
+    $message = Input::get('message'),
     ));
 
             $bookings->cust_name = $cust_name;
-            $bookings->tour_name = $tour->name;
+            $bookings->tour_name = $tourname;
             $customers->cust_name = $cust_name;
             $customers->email = $email;
             $customers->phone = $phone;
             $customers->country = $country;
-            $bookings->tour_date = $tour_date;
-            //$bookings->price = $price;
+            $bookings->tour_date = $tourdateto;
+            //$bookings->price = $tourprice->price;
             //$bookings->status = $status;
 
            $bookings->save();
            $customers->save();
 
-        return view('frontend.master', ['tourdate' => $tourdate, 'tourname' =>$tourname])->with('message', 'Your inquiry has been successfully send to us.');
+        return \Redirect::back()->with('message', 'Your inquiry has been successfully send to us.', $tourname);
 
     }
 
@@ -170,9 +172,9 @@ class BookingController extends Controller
      */
     public function edit($id)
     {
-           $booking = Booking::find($id);
-           $lokasi = \DB::table('charters')->lists('name', 'id');
-           $customers = \DB::table('customers')->lists('cust_name', 'id');
+           $booking = \DB::table('bookings')->where('bookings.id', '=', $id)->leftJoin('charters', 'bookings.tour_name', '=', 'charters.name')->leftJoin('customers', 'bookings.cust_name', '=', 'customers.cust_name')->select('bookings.id as id', 'charters.name as tour_name', 'bookings.tour_date', 'bookings.price', 'bookings.status','customers.cust_name as cust_name', 'customers.email as email', 'customers.phone as phone', 'customers.country as country')->first();
+           $lokasi = \DB::table('charters')->leftJoin('bookings', 'charters.name', '=', 'bookings.tour_name')->get();
+           $customers = \DB::table('customers')->lists('cust_name', 'email', 'phone', 'country' , 'id');
             return view('backend.booking.edit',compact('booking'))->with(['lokasi' => $lokasi, 'customers' => $customers]);
     }
 
@@ -194,12 +196,23 @@ class BookingController extends Controller
     $price = Input::get('price'),
     $status = Input::get('status'),
     ));
+        $customers = new Customers(array(
+    $cust_name = Input::get('name'),            
+    $email = Input::get('email'),
+    $phone = Input::get('phone'),
+    $country = Input::get('country'),
+            ));
+
 
 
 
             $input->cust_name = $cust_name;
             $input->tour_name = $tour_name;
             $input->tour_date = $tour_date;
+            $customers->cust_name = $cust_name;
+            $customers->email = $email;
+            $customers->phone = $phone;
+            $customers->country = $country;
             $input->price = $price;
             $input->status = $status;
 
@@ -224,9 +237,7 @@ class BookingController extends Controller
     {
 
 
-            $booking = Booking::leftJoin('charters', 'bookings.tour_name', '=', 'charters.id')
-            ->leftJoin('customers', 'bookings.cust_name', '=', 'customers.id')
-            ->select(array('bookings.id', 'bookings.cust_name as cust_name', 'bookings.tour_name', 'bookings.tour_date', 'bookings.price','bookings.status', 'bookings.created_at'));
+            $booking = Booking::select(array('bookings.id', 'bookings.cust_name', 'bookings.tour_name', 'bookings.tour_date', 'bookings.price', 'bookings.created_at'));
 
         return Datatables::of($booking)
             ->addColumn('action', function ($booking) {

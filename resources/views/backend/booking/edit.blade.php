@@ -51,18 +51,8 @@
                                         <div class="col-md-12">
     {!! Form::model($booking, [ '_method' => 'PUT', 'files' => 'true', 'route' => ['booking.update', $booking->id]]) !!}
     <div class="form-group">
-        {!! Form::label('Customer', 'Customer Name:') !!}
-        {!! Form::select('cust_name',
-        $customers,
-            null,
-            ['class' => 'form-control']) !!}
-    </div>
-    <div class="form-group">
         {!! Form::label('N_Tour', 'Tour Name:') !!}
-        {!! Form::select('tour_name',
-        $lokasi,
-            null,
-            ['class' => 'form-control']) !!}
+        {!! Form::text('tour_name', null,['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
         {!! Form::label('D_Tour', 'Tour Date:') !!}
@@ -75,17 +65,41 @@
     <div class="form-group">
         {!! Form::label('Status', 'Status:') !!}
         {!! Form::select('status',
-        (['0' => 'Select Status', 'Confirmed' => 'Confirmed', 'On Going' => 'On Going', 'Completed' => 'Completed', 'Cancelled' => 'Cancelled']),
+        (['0' => 'Select Status', '1' => 'Confirmed', '2' => 'On Going', '3' => 'Completed', '4' => 'Cancelled']),
             null,
             ['class' => 'form-control']) !!}
     </div>
-    <div class="form-group">
-        {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-    </div>
-    {!! Form::close() !!}
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-12">
+    <div class="form-group">
+        {!! Form::label('Customer', 'Customer Name:') !!}
+        {!! Form::text('cust_name',null,['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('Email', 'E-mail:') !!}
+        {!! Form::text('email',null,['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('Phone', 'Phone:') !!}
+        {!! Form::text('phone',null,['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
+        {!! Form::label('Country', 'Country:') !!}
+        {!! Form::text('country',null,['class'=>'form-control']) !!}
+    </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+    <div class="form-group">
+        {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+    </div>    {!! Form::close() !!}
+
                             </div>
                         </div>
                     </div>

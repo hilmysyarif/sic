@@ -71,6 +71,10 @@
                                                     ['class' => 'form-control']) !!}
                                             </div>
                                             <div class="form-group">
+                                                {!! Form::label('D_Tour', 'Description:') !!}
+                                                {!! Form::textarea('descr',null,['class'=>'form-control summernote']) !!}
+                                            </div>                                         
+                                            <div class="form-group">
                                                 {!! Form::label('B_Tour', 'Bedrooms:') !!}
                                                 {!! Form::text('beds',null,['class'=>'form-control']) !!}
                                             </div>
@@ -92,7 +96,15 @@
                                             </div>
                                             <div class="form-group">
                                                 {!! Form::label('Image', 'Featured Image:') !!}
-                                                {!! Form::file('image', null) !!}
+                                               <div class="laradrop"
+  laradrop-upload-handler="{{ route('laradrop.store') }}"
+  laradrop-file-delete-handler="{{ route('laradrop.destroy') }}" 
+  laradrop-file-source="{{ route('laradrop.index') }}"
+  laradrop-csrf-token="{{ csrf_token() }}" >
+  <button class='btn btn-primary laradrop-select-file' >Add File</button>
+</div>
+<br />
+<input type="text" class="form-control" name="image[]" id="images">
                                             </div>
                                             <div class="form-group">
                                                 {!! Form::submit('Save', ['class' => 'btn btn-primary form-control']) !!}

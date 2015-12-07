@@ -12,21 +12,31 @@
                 </ul>
             </div>
         </div>
-
-<section id="content" class="gray-area">
+        <section id="content">
             <div class="container">
-                <div class="row">
-                    <div id="main" class="col-sm-8 col-md-9">
+                <div class="row">                   
+                    <div id="main" class="col-md-9">
+                        <div class="tab-container style1" id="cruise-main-content">
+                            <ul class="tabs">
+                                <li class="active"><a data-toggle="tab" href="#inquiry-tab">Inquiry</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="inquiry-tab" class="tab-pane fade in active">
+
+                                        <div class="booking-section travelo-box">
+                                                <div class="person-information">
+                                                    <h2>Your are currently inquiry :  <?php echo $tourname; ?><br /> Date from <?php echo $tourdate; ?> - <?php echo $tourdateto; ?></h2>
+                                                    <p>Please fill the required form for the next steps</p>
+                                        </div>
+                                    </div>
+
+                        <hr />
 
                         <div class="booking-section travelo-box">
-                                <div class="person-information">
-                                    <h2>Your are currently inquiry : {{ $tourname }}</h2>
-                                    <p>Please fill the required form for the next steps</p>
-                        </div>
-                    </div>
-
-                        <div class="booking-section travelo-box">
-                            {!! Form::open(array("url"=>"inquiry/search", 'class'=>'comment-form','id'=>'comment-form', '_method'=>'POST')) !!}
+                            {!! Form::open(array("url"=>"inquiry/send", 'class'=>'comment-form','id'=>'comment-form', '_method'=>'POST')) !!}
+                                {!! Form::hidden('tourname', $tourname) !!}
+                                {!! Form::hidden('tourdate', $tourdate) !!}
+                                {!! Form::hidden('tourdateto', $tourdateto) !!}                                
                                 <div class="person-information">
                                     <h2>Your Personal Information</h2>
                                         @if(Session::has('message'))
@@ -86,21 +96,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar col-md-3">
 
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar col-md-3">
                         <div class="travelo-box contact-box">
                             <h4>Need Help?</h4>
                             <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
                             <address class="contact-details">
-                                <span class="contact-phone"><i class="soap-icon-phone"></i> +6221 57903975 </span>
-                                <br>
-                                <a class="contact-email" href="#">cs@spiceislandcharters.com</a>
+                                <span class="contact-phone"><i class="soap-icon-phone"></i> {!! Settings::get('phone') !!}</span>
+                                <a class="contact-email" href="#">{!! Settings::get('email') !!}</a>
                             </address>
                         </div>
-                    </div>
+                    </div>                 
                 </div>
             </div>
         </section>
+
 
 
 @endsection

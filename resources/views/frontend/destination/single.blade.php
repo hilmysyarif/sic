@@ -133,37 +133,37 @@
                             <div class="post-comment block">
                                 <h2 class="reply-title">Listing Inquiry</h2>
                                 <div class="travelo-box">
-                                    <form class="comment-form">
+                            {!! Form::open(array("url"=>"", 'class'=>'comment-form','id'=>'comment-form', '_method'=>'POST')) !!}
                                         <div class="form-group row">
                                             <div class="col-xs-12">
                                                 <label>Your Name *</label>
-                                                <input class="input-text full-width" type="text">
+                                                <input class="input-text full-width" type="text" name="name">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-xs-6">
                                                 <label>Your Email *</label>
-                                                <input class="input-text full-width" type="text">
+                                                <input class="input-text full-width" type="text" name="email">
                                             </div>
                                             <div class="col-xs-6">
                                                 <label>Phone</label>
-                                                <input class="input-text full-width" type="text">
+                                                <input class="input-text full-width" type="text" name="phone">
                                             </div>
                                         <div class="form-group">
                                             <div class="col-xs-12">
                                                 <label>Your Message</label>
-                                                <textarea rows="6" class="input-text full-width" placeholder="write message here"></textarea>
+                                                <textarea rows="6" class="input-text full-width" placeholder="write message here" name="message"></textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-4">
-                                                <button type="submit" class="btn-large full-width">SEND COMMENT</button>
+                                                <button type="submit" class="btn-large full-width">SEND</button>
                                             </div>
                                         </div>
                                       </div>
 
-                                    </form>
+                                    {!! Form::close() !!}
                                 </div>
                             </div>
 

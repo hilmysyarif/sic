@@ -22,6 +22,18 @@
                                     <a href="{{ URL::to('/news') }}">News</a>
                                 </li>
                                 <li class="col-xs-6">
+                                    <a href="{{ URL::to('/about/about-us') }}">About Us</a>
+                                </li>
+                                <li class="col-xs-6">
+                                    <a href="{{ URL::to('/about/company-profile') }}">Company Profile</a>
+                                </li>                                  
+                                <li class="col-xs-6">
+                                    <a href="{{ URL::to('/about/privacy-and-policy') }}">Privacy & Policy</a>
+                                </li>
+                                <li class="col-xs-6">
+                                    <a href="{{ URL::to('/about/terms-and-condition') }}">Terms & Condition</a>
+                                </li>                                                                                                
+                                <li class="col-xs-6">
                                     <a href="{{ URL::to('/contact') }}">Contact</a>
                                 </li>
                             </ul>                            
@@ -49,9 +61,17 @@
                             <h2>Mailing List</h2>
                             <p>Sign up for our mailing list to get latest updates and offers.</p>
                             <br />
+                                {!! Form::open(array('url' => 'subscribe' , 'class'=>'contact-form', '_method'=>'POST')) !!}                            
+                                            <div class="form-group">
                             <div class="icon-check">
                                 <input name="subs" type="text" class="input-text full-width" placeholder="your email" />
                             </div>
+                                            </div>
+                                    <div class="action">
+                                         <button type="submit" class="btn btn-small">SUBSCRIBE</button>
+                                    </div>
+
+                                {!! Form::close() !!}                    
                             <br />
                             <span>We respect your privacy</span>
                         </div>
@@ -65,13 +85,8 @@
                                 <a href="#" class="contact-email">{!! Settings::get('email') !!}</a>
                             </address>
                             <ul class="social-icons clearfix">
-                                <li class="twitter"><a title="twitter" href="#" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
-                                <li class="googleplus"><a title="googleplus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
-                                <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
-                                <li class="linkedin"><a title="linkedin" href="#" data-toggle="tooltip"><i class="soap-icon-linkedin"></i></a></li>
-                                <li class="vimeo"><a title="vimeo" href="#" data-toggle="tooltip"><i class="soap-icon-vimeo"></i></a></li>
-                                <li class="dribble"><a title="dribble" href="#" data-toggle="tooltip"><i class="soap-icon-dribble"></i></a></li>
-                                <li class="flickr"><a title="flickr" href="#" data-toggle="tooltip"><i class="soap-icon-flickr"></i></a></li>
+                                <li class="twitter"><a title="twitter" href="{!! Settings::get('twitter') !!}" data-toggle="tooltip"><i class="soap-icon-twitter"></i></a></li>
+                                <li class="facebook"><a title="facebook" href="{!! Settings::get('facebook') !!}" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
                             </ul>
                         </div>
                     </div>

@@ -13,15 +13,20 @@ use DB;
 use Input;
 use Image;
 use Newsletter;
-use Commentable;
 use App\Charters as Charters;
-use Lanz\Commentable\Comment as Comment;
-
+use Mailchimp;
+use App\Http\Requests\NewsletterRequest;
 
 class NewsController extends Controller
 {
 
+    protected $mailchimp;
 
+
+    public function __construct(Mailchimp $mailchimp) 
+    {
+        $this->mailchimp = $mailchimp;
+    }
 
     /**
      * Passing data to view
@@ -45,15 +50,15 @@ class NewsController extends Controller
     {
 
 
-        $tourname = Input::get('tujuan');
-        $tourdate = Input::get('date_from') + ' - ' + Input::get('date_to');
 
         $produk = DB::table('charters')->whereCategories('5')->leftJoin('lokasis', 'charters.lokasi', '=', 'lokasis.id')->select('charters.name', 'lokasis.name as lokasi', 'charters.berths', 'charters.price', 'charters.image', 'charters.slug')->limit(3)->get();
         $produk2 = DB::table('charters')->leftJoin('lokasis', 'charters.lokasi', '=', 'lokasis.id')->select('charters.name', 'lokasis.name as lokasi', 'charters.berths', 'charters.price', 'charters.image', 'charters.slug')->limit(1)->get();
         $testimonial = DB::table('testimonials')->select('testimonials.cust_name as name', 'testimonials.testimonial', 'testimonials.image')->get();
         $news = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
-        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
-        return view('frontend.master')->with(['produk2' => $produk2, 'news' => $news,'news2' => $news2, 'testimonial' => $testimonial, 'produk' => $produk, 'tourname' => $tourname, 'tourdate' => $tourdate]);
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->limit(1)->get();
+
+
+        return view('frontend.master')->with(['news' => $news,'news2' => $news2, 'testimonial' => $testimonial, 'produk' => $produk, 'produk2' => $produk2]);
 
     }
 
@@ -65,19 +70,11 @@ class NewsController extends Controller
     public function showSingle($slug)
     {
 
-        $disqus = new \Disqus('FL6aL6qXJBlLskGvLbfwgj4eyJmApsi7YOvwHn1Poi6itLKZvPGbuBkGRDgv01tR');
-
-        // to turn off SSL
-        $disqus->setSecure(false);
-
-        // example API call
-        $comments = $disqus->forums('listPosts', 'spiceislandcharter');
-
         $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
         $news = News::where('slug','=', $slug)->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news.category', 'news.s_content', 'news.content', 'users.name as publisher', 'news.image', 'news.created_at')->get();
         
 
-        return view('frontend.news.single')->with(['news' => $news, 'news2' => $news2, 'comments' => $comments]);
+        return view('frontend.news.single')->with(['news' => $news, 'news2' => $news2]);
 
     
     }

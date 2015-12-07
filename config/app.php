@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG', true),
+	'debug' => env('APP_DEBUG', false),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://sic-s100.rhcloud.com/',
+	'url' => 'http://spiceislandcharters.com/web1/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'UTC+7',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -148,6 +148,8 @@ return [
         'Spatie\Newsletter\NewsletterServiceProvider',
         'Cornford\Googlmapper\MapperServiceProvider',
         'Roumen\Disqus\DisqusServiceProvider',
+        'Skovmand\Mailchimp\MailchimpServiceProvider',
+        'Jasekz\Laradrop\LaradropServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -214,6 +216,7 @@ return [
 		'Surpass'   => 'Sukohi\Surpass\Facades\Surpass',
 		'Newsletter' => 'Spatie\Newsletter\NewsletterFacade',
 		'Mapper'         => 'Cornford\Googlmapper\Facades\MapperFacade',
+		'Laradrop' => 'Jasekz\Laradrop\LaradropFacade',
 	],
 
 ];

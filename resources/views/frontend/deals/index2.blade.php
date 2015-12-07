@@ -27,9 +27,8 @@
                                 </br></br>
                             </div>
                             <div class="search-box">
-                                                           @foreach ($produk2 as $key => $value)
-                                              {!! Form::open(array("url"=>"/inquiry" . $value->slug, 'class'=>'comment-form','id'=>'comment-form', '_method'=>'POST')) !!}
-                                             @endforeach              <div class="row">
+                                              {!! Form::open(array('route'=>'inquiry.frontend_atas', 'class'=>'comment-form','id'=>'comment-form')) !!}
+                                                          <div class="row">
                                                          <div class="col-xs-6 col-md-4">
                                                                 <div class="form-group">
                                                                     <label>Where do you want to go</label>
@@ -61,7 +60,7 @@
                                                             </div>
                                                          <div class="form-group col-md-2 fixheight">
                                                             <label class="hidden-xs">&nbsp;</label>
-                                                           @foreach ($produk2 as $key => $value) <button class="icon-check full-width"><a href="{{ URL::to('/')}}/search"> SEARCH NOW</a></button> @endforeach
+                                                         <button class="icon-check full-width">SEARCH NOW</button>
                                                         </div>
                                                     </div>
                                             {!! Form::close() !!}
@@ -73,22 +72,14 @@
                 </div>
             </div>
 
-                    @if(Session::has('message'))
-                        <div>
-                            {{ Session::pull('message') }}
-                        </div>
-                    @endif
-                    @if(! $errors->isEmpty())
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-
             <div class="section">
                 <div class="container">
                     <div class="text-center description block">
+
+                                        @if(Session::has('message'))
+                                        <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                                        @endif
+
                         <h1>Our Exclusive Deals</h1>
                     </div>
                  <section id="content">

@@ -88,10 +88,13 @@
                                 <h2 class="box-title">{{ $value->name }}</h2>
                                 <span class="price clearfix">
                                     <small class="pull-left">from</small>
-                                    <span class="pull-right">Rp {{ $value->price }}</span>
+                                        @if( $value->price == "CALL FOR PRICE" )
+                                            <span class="pull-right">{{ $value->price }}</span>
+                                        @else
+                                            <span class="pull-right">Rp {{ $value->price }}</span>
+                                        @endif
                                 </span>
-                               
-                                <p class="description">{{ $value->descr }}</p>
+                            
                                 <a class="button yellow full-width uppercase btn-small" href="{{ URL::to('/') }}/inquiry/{{ $value->slug }}">Booking Now</a>
                             </div>
                         </article>

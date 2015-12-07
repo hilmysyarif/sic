@@ -44,6 +44,8 @@ class SettingsController extends Controller
     $email = Input::get('email'),
     $keywords = Input::get('keywords'),
     $copyright = Input::get('copyright'),
+    $facebook = Input::get('facebook'),
+    $twitter = Input::get('twitter'),
     ));
 
             settings_set('title', Input::get('title'));
@@ -57,6 +59,8 @@ class SettingsController extends Controller
             settings_set('privacy', Input::get('privacy'));
             settings_set('terms', Input::get('terms'));
             settings_set('address', Input::get('address'));
+            settings_set('facebook', Input::get('facebook'));
+            settings_set('twitter', Input::get('twitter'));
             settings_set('phone', Input::get('phone'));
             settings_set('about', Input::get('about'));                              
 
@@ -89,6 +93,8 @@ class SettingsController extends Controller
             settings_set('desc_about', Input::get('desc_about'));
             settings_set('company_profile', Input::get('compro'));
             settings_set('privacy', Input::get('privacy'));
+            settings_set('facebook', Input::get('facebook'));
+            settings_set('twitter', Input::get('twitter'));            
             settings_set('terms', Input::get('terms'));
             settings_set('address', Input::get('address'));
             settings_set('phone', Input::get('phone'));    

@@ -6,14 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateAlbumsTable' => $baseDir . '/database/migrations/2015_04_13_020453_create_albums_table.php',
     'CreateBookingsTable' => $baseDir . '/database/migrations/2015_06_25_002812_create_bookings_table.php',
     'CreateChartersTable' => $baseDir . '/database/migrations/2015_06_25_002812_create_charters_table.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2015_12_03_213946_create_comments_table.php',
     'CreateDestinationsTable' => $baseDir . '/database/migrations/2015_06_25_001834_create_destinations_table.php',
+    'CreateImageTable' => $baseDir . '/database/migrations/2015_12_03_213946_create_image_table.php',
     'CreateLaraSettingsTable' => $baseDir . '/database/migrations/2015_04_13_020453_create_lara_settings_table.php',
     'CreateNewsTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_news_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreateSettingsTable' => $vendorDir . '/efriandika/laravel-settings/src/database/migrations/2015_04_13_020453_create_settings_table.php',
+    'CreateSettingsTable' => $baseDir . '/database/migrations/2015_04_13_020453_create_settings_table.php',
     'CreateSurpassTable' => $baseDir . '/database/migrations/2015_08_05_192153_create_surpass_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
@@ -89,7 +91,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
-    'Lanz\\Commentable\\MigrationCommand' => $vendorDir . '/lanz/laravel-commentable/src/commands/MigrationCommand.php',
+    'ImageManagerFilesTable' => $baseDir . '/database/migrations/2014_08_26_005557_image_manager_files_table.php',
     'PHPUnit_Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit_Extensions_GroupTestSuite' => $vendorDir . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
     'PHPUnit_Extensions_PhptTestCase' => $vendorDir . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -525,5 +527,6 @@ return array(
     'SettingsTableSeeder' => $baseDir . '/database/seeds/SettingsTableSeeder.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UpdateImageManagerFilesTable' => $baseDir . '/database/migrations/2015_09_16_083228_UpdateImageManagerFilesTable.php',
     'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
 );

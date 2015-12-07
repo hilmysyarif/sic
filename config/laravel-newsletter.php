@@ -8,7 +8,7 @@ return [
          * The api key of a MailChimp account. You can find yours here:
          * https://us10.admin.mailchimp.com/account/api-key-popup/
          */
-        'apiKey' => '3e4430d3e27ec1ef3418035718e028cc-us12',
+        'apiKey' => env('MAILCHIMP_APIKEY'),
 
         /*
          * Here you can define properties of the lists you want to

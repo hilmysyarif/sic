@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f6b1832ac16d56f58e91ad06d0a6cc1e",
-    "content-hash": "172ac92d13ba880ca84b2ff5da5871b9",
+    "hash": "a8736d3c3013baa9afffbb9be1015638",
+    "content-hash": "fa13225d45775ec6a2a9f0685eb80354",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -738,31 +738,78 @@
             "time": "2015-04-20 18:58:01"
         },
         {
-            "name": "jeremeamia/SuperClosure",
-            "version": "2.1.0",
+            "name": "jasekz/laradrop",
+            "version": "0.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jeremeamia/super_closure.git",
-                "reference": "b712f39c671e5ead60c7ebfe662545456aade833"
+                "url": "https://github.com/jasekz/laradrop.git",
+                "reference": "0a58dcf81d3c1d6ff93b50d84c8fdbe47ca57382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/b712f39c671e5ead60c7ebfe662545456aade833",
-                "reference": "b712f39c671e5ead60c7ebfe662545456aade833",
+                "url": "https://api.github.com/repos/jasekz/laradrop/zipball/0a58dcf81d3c1d6ff93b50d84c8fdbe47ca57382",
+                "reference": "0a58dcf81d3c1d6ff93b50d84c8fdbe47ca57382",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "~1.0",
-                "php": ">=5.4"
+                "ext-fileinfo": "*",
+                "illuminate/support": "~5.0",
+                "intervention/image": "2.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Jasekz\\Laradrop": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jasek Zbigniew",
+                    "email": "zig@elegrit.com",
+                    "homepage": "http://elegrit.com"
+                }
+            ],
+            "description": "File manager using Dropzone.js for Laravel 5",
+            "keywords": [
+                "dropzone.js",
+                "file manager",
+                "file upload",
+                "laravel 5",
+                "php"
+            ],
+            "time": "2015-08-18 18:20:04"
+        },
+        {
+            "name": "jeremeamia/SuperClosure",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeremeamia/super_closure.git",
+                "reference": "29a88be2a4846d27c1613aed0c9071dfad7b5938"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeremeamia/super_closure/zipball/29a88be2a4846d27c1613aed0c9071dfad7b5938",
+                "reference": "29a88be2a4846d27c1613aed0c9071dfad7b5938",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "^1.2|^2.0",
+                "php": ">=5.4",
+                "symfony/polyfill-php56": "^1.0"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": "~0.1.2",
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "^4.0|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -793,20 +840,20 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2015-03-11 20:06:43"
+            "time": "2015-12-05 17:17:57"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.0.33",
+            "version": "v5.0.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b11c8ab88245f920b30e5f30e16b141ac8d461d3"
+                "reference": "98dbaafe8e2781f86b1b858f8610be0d7318b153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b11c8ab88245f920b30e5f30e16b141ac8d461d3",
-                "reference": "b11c8ab88245f920b30e5f30e16b141ac8d461d3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/98dbaafe8e2781f86b1b858f8610be0d7318b153",
+                "reference": "98dbaafe8e2781f86b1b858f8610be0d7318b153",
                 "shasum": ""
             },
             "require": {
@@ -919,7 +966,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-06-09 13:12:19"
+            "time": "2015-12-04 23:20:49"
         },
         {
             "name": "laravelcollective/html",
@@ -1722,6 +1769,37 @@
             "time": "2015-05-16 16:31:33"
         },
         {
+            "name": "skovmand/mailchimp-laravel",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skovmand/mailchimp-laravel.git",
+                "reference": "18a372d1569d2374bf4c27be0d80b31cba5f8d32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skovmand/mailchimp-laravel/zipball/18a372d1569d2374bf4c27be0d80b31cba5f8d32",
+                "reference": "18a372d1569d2374bf4c27be0d80b31cba5f8d32",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.0 - 5.1",
+                "mailchimp/mailchimp": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Skovmand\\Mailchimp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A minimal service provider to set up and use the Mailchimp PHP library in Laravel 5",
+            "time": "2015-05-16 14:28:11"
+        },
+        {
             "name": "soapbox/laravel-formatter",
             "version": "2.0",
             "source": {
@@ -2327,6 +2405,114 @@
             "time": "2015-11-23 11:37:53"
         },
         {
+            "name": "symfony/polyfill-php56",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php56.git",
+                "reference": "a6bd4770a6967517e6610529e14afaa3111094a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/a6bd4770a6967517e6610529e14afaa3111094a3",
+                "reference": "a6bd4770a6967517e6610529e14afaa3111094a3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/polyfill-util": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php56\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 5.6+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
+            "name": "symfony/polyfill-util",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-util.git",
+                "reference": "4271c55cbc0a77b2641f861b978123e46b3da969"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/4271c55cbc0a77b2641f861b978123e46b3da969",
+                "reference": "4271c55cbc0a77b2641f861b978123e46b3da969",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Util\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony utilities for portability of PHP codes",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compat",
+                "compatibility",
+                "polyfill",
+                "shim"
+            ],
+            "time": "2015-11-04 20:28:58"
+        },
+        {
             "name": "symfony/process",
             "version": "v2.6.12",
             "target-dir": "Symfony/Component/Process",
@@ -2732,61 +2918,6 @@
     ],
     "packages-dev": [
         {
-            "name": "baum/baum",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/etrepat/baum.git",
-                "reference": "9290bed862d329aaaef666a71e0a2734afc28286"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/etrepat/baum/zipball/9290bed862d329aaaef666a71e0a2734afc28286",
-                "reference": "9290bed862d329aaaef666a71e0a2734afc28286",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "5.*",
-                "illuminate/database": "5.*",
-                "illuminate/events": "5.*",
-                "illuminate/filesystem": "5.*",
-                "illuminate/support": "5.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "d11wtq/boris": "~1.0.10",
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Baum": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Estanislau Trepat",
-                    "email": "estanis@etrepat.com",
-                    "homepage": "http://etrepat.com"
-                }
-            ],
-            "description": "Baum is an implementation of the Nested Set pattern for Eloquent models.",
-            "keywords": [
-                "Laravel 4",
-                "database",
-                "eloquent",
-                "laravel",
-                "laravel 5",
-                "nested set"
-            ],
-            "time": "2015-03-04 12:07:54"
-        },
-        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -2936,60 +3067,6 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
-        },
-        {
-            "name": "lanz/laravel-commentable",
-            "version": "v2.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RomainLanz/laravel-commentable.git",
-                "reference": "3c888f05d8834498a6ef2643f7f9c59167fdd2f4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RomainLanz/laravel-commentable/zipball/3c888f05d8834498a6ef2643f7f9c59167fdd2f4",
-                "reference": "3c888f05d8834498a6ef2643f7f9c59167fdd2f4",
-                "shasum": ""
-            },
-            "require": {
-                "baum/baum": "~1.1",
-                "illuminate/database": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/commands"
-                ],
-                "psr-4": {
-                    "Lanz\\Commentable\\": "src/Commentable"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Romain Lanz",
-                    "email": "lanz.romain@gmail.com"
-                }
-            ],
-            "description": "Allows for threaded comments to be added to multiple and different models.",
-            "keywords": [
-                "Laravel 4",
-                "comment",
-                "commentable",
-                "laravel",
-                "laravel 5",
-                "nested set",
-                "threaded"
-            ],
-            "time": "2015-03-23 10:53:38"
         },
         {
             "name": "mockery/mockery",
@@ -3711,28 +3788,28 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "863df9687835c62aa423a22412d26fa2ebde3fd3"
+                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/863df9687835c62aa423a22412d26fa2ebde3fd3",
-                "reference": "863df9687835c62aa423a22412d26fa2ebde3fd3",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
+                "reference": "2b0112e42c338afa9ad9dfeb94d66f6d84c2f828",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.2"
+                "phpunit/phpunit": "~5"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -3755,11 +3832,11 @@
                 }
             ],
             "description": "Diff implementation",
-            "homepage": "http://www.github.com/sebastianbergmann/diff",
+            "homepage": "https://github.com/sebastianbergmann/diff",
             "keywords": [
                 "diff"
             ],
-            "time": "2015-02-22 15:13:53"
+            "time": "2015-12-06 07:21:36"
         },
         {
             "name": "sebastian/environment",
@@ -3930,16 +4007,16 @@
         },
         {
             "name": "sebastian/recursion-context",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/recursion-context.git",
-                "reference": "994d4a811bafe801fb06dccbee797863ba2792ba"
+                "reference": "913401df809e99e4f47b27cdd781f4a258d58791"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/994d4a811bafe801fb06dccbee797863ba2792ba",
-                "reference": "994d4a811bafe801fb06dccbee797863ba2792ba",
+                "url": "https://api.github.com/repos/sebastianbergmann/recursion-context/zipball/913401df809e99e4f47b27cdd781f4a258d58791",
+                "reference": "913401df809e99e4f47b27cdd781f4a258d58791",
                 "shasum": ""
             },
             "require": {
@@ -3979,7 +4056,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2015-06-21 08:04:50"
+            "time": "2015-11-11 19:50:13"
         },
         {
             "name": "sebastian/version",

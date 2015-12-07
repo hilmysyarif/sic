@@ -16,24 +16,44 @@ Route::get('/', [
     'as' => 'frontend', 'uses' => 'NewsController@showRecent'
 ]);
 
-Route::get('/search', [
-    'as' => 'inquiry.frontend2', 'uses' => 'BookingController@inquiry'
+// About Us Routes
+Route::get('/about/about-us', [
+    'as' => 'about-us', 'uses' => 'FrontendController@about'
 ]);
 
-Route::post('/search' , [
-    'as' => 'inquiry.storeatas', 'uses' => 'BookingController@inquirysearch'
+// Company Profile Routes
+Route::get('/about/company-profile', [
+    'as' => 'company-profile', 'uses' => 'FrontendController@compro'
+]);
+
+// Privacy and Policy Routes
+Route::get('/about/privacy-and-policy', [
+    'as' => 'privacy-and-policy', 'uses' => 'FrontendController@privacy'
+]);
+
+// Terms and Condition Routes
+Route::get('/about/terms-and-condition', [
+    'as' => 'terms-and-condition', 'uses' => 'FrontendController@terms'
+]);
+
+// Subscribe Routes
+Route::post('/subscribe' , [
+    'as' => 'subscribe', 'uses' => 'FrontendController@subscribe'
 ]);
 
 // Inquiry Routes
-Route::get('/inquiry/{slug}', [
-    'as' => 'inquiry.frontend_atas', 'uses' => 'BookingController@inquiry'
+Route::get('/inquiry', [
+    'as' => 'inquiry.frontend_atas', 'uses' => 'BookingController@inquirysearch'
 ]);
 
-Route::post('/inquiry/{slug}' , [
-    'as' => 'inquiry.storeatas', 'uses' => 'BookingController@inquiry_store'
+Route::post('/inquiry', [
+    'as' => 'inquiry.frontend_atas', 'uses' => 'BookingController@inquirysearch'
 ]);
 
-// Inquiry Routes
+Route::post('/inquiry/send' , [
+    'as' => 'inquiry.storeatas', 'uses' => 'BookingController@inquiry_storeatas'
+]);
+
 Route::get('/inquiry/{slug}', [
     'as' => 'inquiry.frontend', 'uses' => 'BookingController@inquiry'
 ]);

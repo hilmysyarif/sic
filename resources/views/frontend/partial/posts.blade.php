@@ -22,9 +22,9 @@
                                     <div class="post-meta">
                                         <span class="entry-author fn">By <a href="#">{{ $value->publisher}}</a></span>
                                         <span class="entry-time"><span class="published">{{ $value->created_at }}</span></span>
-                                        <span class="post-category">in <a href="#">Antigua</a></span>
+                                        <span class="post-category">in <a href="#">{{ $value->category }}</a></span>
                                     </div>
-                                    <h3 class="entry-title"><a href="#">{{ $value->title }}</a></h3>
+                                    <h3 class="entry-title"><a href="{{ URL::to('/') }}/news/{{ $value->slug }}">{{ $value->title }}</a></h3>
                                     <p>{!! $value->s_content !!}</p>
                                 </div>
                                 <div class="post-action">

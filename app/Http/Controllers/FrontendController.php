@@ -11,10 +11,21 @@ use App\User as User;
 use App\Http\Controllers\Controller;
 use Input;
 use Spatie\Newsletter\MailChimp\Newsletter;
-
-
-class DashboardController extends Controller
+use Mailchimp;
+use DB;
+class FrontendController extends Controller
 {
+
+    protected $mailchimp;
+    protected $listId = 'd9ae9ab162';        // Id of newsletter list
+
+
+    public function __construct(Mailchimp $mailchimp) 
+    {
+        $this->mailchimp = $mailchimp;
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,11 +48,81 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function about()
+    {
+
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
+        $news = News::where('id','!=','null')->get();
+        return view('frontend.about.about')->with(['news' => $news, 'news2' => $news2]);
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function compro()
+    {
+
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
+        $news = News::where('id','!=','null')->get();
+        return view('frontend.about.compro')->with(['news' => $news, 'news2' => $news2]);
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function privacy()
+    {
+
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
+        $news = News::where('id','!=','null')->get();
+        return view('frontend.about.privacy')->with(['news' => $news, 'news2' => $news2]);
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function terms()
+    {
+
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
+        $news = News::where('id','!=','null')->get();
+        return view('frontend.about.terms')->with(['news' => $news, 'news2' => $news2]);
+
+    }
+
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function subscribe()
     {
 
-        Newsletter::subscribe(Input::get('subs'));
-        return view('frontend.master')->with('message', 'Thanks for subscribe to us!');
+        $news2 = DB::table('news')->leftJoin('users', 'news.publisher', '=', 'users.id')->leftJoin('news_categories', 'news.category', '=', 'news_categories.id')->select('news.title', 'news.slug', 'news_categories.name as category', 'news.s_content', 'users.name as publisher', 'news.image', 'news.created_at', 'users.image as image2')->get();
+
+        try {
+            $this->mailchimp
+                ->lists
+                ->subscribe(
+                    $this->listId, 
+                    ['email' => Input::get('email')]
+                );
+        } catch (\Mailchimp_List_AlreadySubscribed $e) {
+            return \Redirect::to('/')->with('message', 'Sorry, You already subscribe us');
+        } catch (\Mailchimp_Error $e) {
+             return \Redirect::to('/')->with('message', 'Thanks for subscribe to us!');
+        }
 
     }
 

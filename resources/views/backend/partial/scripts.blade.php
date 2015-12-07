@@ -49,7 +49,20 @@
 <script src="{{ asset('/js/lib/dataTables.tableTools.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/lib/dataTables.bootstrap.js') }}" type="text/javascript"></script>
 
+<script src="{{ asset('/vendor/jasekz/laradrop/js/enyo.dropzone.js') }}"></script>
+<script src="{{ asset('/vendor/jasekz/laradrop/js/laradrop.js') }}"></script>
+
 <script>
+
+jQuery(document).ready(function(){
+    jQuery('.laradrop').laradrop({
+        onInsertCallback: function (src){
+          // this is called when the 'select' button is clicked on a thumbnail
+            //alert('File '+src+' selected.  Please implement onInsertCallback().');
+            $('#images').val(src);
+        }
+    });
+});
 
 $('.summernote').summernote({
   height: 300,                 // set editor height
@@ -95,7 +108,6 @@ $('.summernote').summernote({
             {data: 'tour_name', name: 'tour_name'},
             {data: 'tour_date', name: 'tour_date'},
             {data: 'price', name: 'price'},
-            {data: 'status', name: 'status'},
             {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
@@ -165,7 +177,9 @@ $('.summernote').summernote({
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     });
+
 </script>
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
